@@ -1,5 +1,5 @@
 import os
-import sqlite3  # Corrected import
+import sqlite3
 import msgpack
 from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, String, Float, LargeBinary
@@ -17,7 +17,6 @@ if platform.system() == "Windows":
     DB_PATH = os.path.join(os.getenv('LOCALAPPDATA'), 'DigitalSignalCapture', 'signals.db')
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     config.DATABASE_URL = f"sqlite:///{DB_PATH}"
-    logger.info(f"Using database path: {DB_PATH}")
 
 class DigitalSignal(Base):
     __tablename__ = 'signals'
@@ -33,20 +32,18 @@ class DigitalSignal(Base):
 
 def init_db():
     """Initialize database with connection pooling"""
-    try:
-        engine = create_engine(
-            config.DATABASE_URL,
-            pool_size=10,
-            max_overflow=20,
-            pool_recycle=3600
-        )
-        Base.metadata.create_all(engine)
-        Session = sessionmaker(bind=engine)
-        logger.info(f"Database initialized at {config.DATABASE_URL}")
-        return Session
-    except Exception as e:
-        logger.error(f"Database initialization failed: {str(e)}")
-        raise
+    engine = create_engine(
+        config.DATABASE_URL,
+        pool_size=10,
+        max_overflow=20,
+        pool_recycle=3600
+    )
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    logger.info(f"Database initialized at {config.DATABASE_URL}")
+    return Session
+
+# ... rest of database functions ...
 
 def compress_data(data):
     """Compress data using MessagePack"""
