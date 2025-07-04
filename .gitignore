@@ -1,0 +1,31 @@
+# Virtual environment
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info
+.pytest_cache/
+
+# Environment variables
+.env
+.env.local
+
+# Data files
+*.db
+*.log
+*.sqlite
+captures/
+
+# Editors/IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# Windows-specific
+Thumbs.db
+Desktop.ini
+*.bak
+*.tmp
