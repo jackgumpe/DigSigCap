@@ -1,0 +1,35 @@
+{
+  "default_quantization": "Q5_K_M",
+  "models": {
+    "fp16": {
+      "model_path": "C:/Dev/llm-research/deepseek-ocr/models/deepseek-ai/DeepSeek-OCR",
+      "adapter_path": "C:/Dev/llm-research/deepseek-ocr/models/deepseek-ai/DeepSeek-OCR-Large-Adapter",
+      "huggingface_repo_id": "deepseek-ai/DeepSeek-OCR",
+      "adapter_repo_id": "deepseek-ai/DeepSeek-OCR-Large-Adapter",
+      "quantization_level": "fp16",
+      "description": "Original Full Precision Model and Large Adapter",
+      "requires_gpu_memory_gb": 6,
+      "unquantized_baseline_cer": null
+    },
+    "Q5_K_M": {
+      "model_path": "C:/Dev/llm-research/deepseek-ocr/models/quantized/deepseek-ai/DeepSeek-OCR-Q5K_M",
+      "adapter_path": "C:/Dev/llm-research/deepseek-ocr/models/quantized/deepseek-ai/DeepSeek-OCR-Large-Adapter-Q5K_M",
+      "huggingface_repo_id": "deepseek-ai/DeepSeek-OCR",
+      "adapter_repo_id": "deepseek-ai/DeepSeek-OCR-Large-Adapter",
+      "quantization_level": "Q5_K_M",
+      "description": "Quantized Q5_K_M Model and Large Adapter",
+      "requires_gpu_memory_gb": 4,
+      "unquantized_baseline_cer": null
+    },
+    "Q8_0": {
+      "model_path": "C:/Dev/llm-research/deepseek-ocr/models/quantized/deepseek-ai/DeepSeek-OCR-Q8_0",
+      "adapter_path": "C:/Dev/llm-research/deepseek-ocr/models/quantized/deepseek-ai/DeepSeek-OCR-Large-Adapter-Q8_0",
+      "huggingface_repo_id": "deepseek-ai/DeepSeek-OCR",
+      "adapter_repo_id": "deepseek-ai/DeepSeek-OCR-Large-Adapter",
+      "quantization_level": "Q8_0",
+      "description": "Quantized Q8_0 Model and Large Adapter",
+      "requires_gpu_memory_gb": 5,
+      "unquantized_baseline_cer": null
+    }
+  }
+}

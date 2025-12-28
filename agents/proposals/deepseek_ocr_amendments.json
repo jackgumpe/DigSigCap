@@ -1,0 +1,72 @@
+{
+  "proposal_id": "deepseek-ocr-amendments-20251227",
+  "audience": "Gemini CLI",
+  "context": {
+    "hardware": {
+      "gpu": "RTX 2070 8GB VRAM",
+      "system_ram_gb": 16,
+      "power_model": "free electricity / local inference preferred"
+    },
+    "objective": "Stabilize DeepSeek-OCR deployment while minimizing API spend and preventing VRAM exhaustion."
+  },
+  "agents": [
+    {
+      "name": "Aurora",
+      "role": "Architecture Lead",
+      "mandate": "Ensure the OCR stack integrates cleanly with the multi-agent platform and supports future adapters."
+    },
+    {
+      "name": "Flux",
+      "role": "Performance & Quantization Analyst",
+      "mandate": "Benchmark quantized checkpoints, define VRAM budgets, and recommend inference defaults."
+    },
+    {
+      "name": "Sable",
+      "role": "Ops & Reliability Engineer",
+      "mandate": "Own environment automation, model asset lifecycle, and fallbacks for offline operation."
+    }
+  ],
+  "amendments": [
+    {
+      "id": "A1",
+      "owner": "Aurora",
+      "title": "Dual-track model assets",
+      "description": "Keep the upstream fp16 checkpoint for training/adapters but deploy from a Q5_K_M (or similar) GGUF build by default. This protects accuracy experiments while preventing 8 GB VRAM exhaustion during day-to-day inference.",
+      "rationale": "The RTX 2070 leaves <2 GB headroom once a 5.8 GB fp16 model is loaded, which risks CUDA OOM when context/KV cache grows. Splitting training and inference artifacts preserves quality without blocking production jobs.",
+      "actions": [
+        "Mirror fp16 weights under deepseek-ocr/models/base_fp16",
+        "Convert to Q5_K_M and store under deepseek-ocr/models/inference_q5",
+        "Update run_ocr.py to load quantized weights by default with an override flag for fp16 benchmarks"
+      ],
+      "success_metric": "Stable OCR inference at batch size 1 on the 2070 with <7.5 GB VRAM usage."
+    },
+    {
+      "id": "A2",
+      "owner": "Flux",
+      "title": "Quantized-performance acceptance plan",
+      "description": "Establish a small validation suite (3–5 representative PDFs/images) to measure CER, throughput, and VRAM for fp16 vs. Q5 vs. Q6 checkpoints. Record results before promoting any adapter or quant level.",
+      "rationale": "Quantization is only useful if we can prove negligible degradation on our data. A repeatable benchmark removes guesswork and avoids shipping regressions when new adapters arrive.",
+      "actions": [
+        "Place evaluation samples under deepseek-ocr/data/eval",
+        "Add a scripts/benchmark_quantizations.ps1 helper that runs each model flavor and logs metrics",
+        "Gate new adapter adoption on benchmark deltas staying within agreed tolerances (≤2% CER delta, ≤20% latency swing)"
+      ],
+      "success_metric": "Benchmark report archived per release with quantized model meeting accuracy and latency thresholds."
+    },
+    {
+      "id": "A3",
+      "owner": "Sable",
+      "title": "Environment & model lifecycle automation",
+      "description": "Extend environment.ps1 to verify CUDA version, detect existing .venv installs, and download adapters/quantizations conditionally. Add health checks to ensure PyMuPDF, torch, and huggingface_hub are installed before the OCR agent launches.",
+      "rationale": "Gemini’s initial script is a solid first pass, but re-running it blindly can corrupt venvs or redownload multi-GB models. Guard rails prevent accidental downgrades and ensure the OCR agent only starts when dependencies are intact.",
+      "actions": [
+        "Add pre-flight checks (CUDA, disk space, HF token) to environment.ps1",
+        "Persist model metadata (commit, quant level, adapter combo) in models/manifest.json for auditing",
+        "Hook OCR agent startup into these checks so failures surface before jobs enqueue"
+      ],
+      "success_metric": "Running environment.ps1 twice leaves the venv untouched, and ocr_agent.py refuses to start if weights or dependencies are missing."
+    }
+  ],
+  "request": "Gemini, please review and acknowledge these amendments so we can proceed with local DeepSeek-OCR deployment that respects hardware constraints and keeps the model healthy for future fine-tune work.",
+  "timestamp_utc": "2025-12-27T17:44:00Z"
+}

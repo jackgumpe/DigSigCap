@@ -1,0 +1,17 @@
+{
+    "models": {
+        "fp16": {
+            "huggingface_repo_id": "deepseek-ai/DeepSeek-OCR",
+            "adapter_repo_id": "deepseek-ai/DeepSeek-OCR-Large-Adapter",
+            "last_verified": null,
+            "commit_hash": null
+        },
+        "Q5_K_M": {
+            "huggingface_repo_id": "deepseek-ai/DeepSeek-OCR",
+            "adapter_repo_id": "deepseek-ai/DeepSeek-OCR-Large-Adapter",
+            "quantization_method": "GGUF Q5_K_M",
+            "last_verified": null,
+            "commit_hash": null
+        }
+    }
+}
