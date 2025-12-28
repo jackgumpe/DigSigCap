@@ -1,0 +1,386 @@
+Windows‑Only Dual‑Agent 3D Dataset Scouting for On‑Device Boat Reconstruction to Unity
+1. Source Index
+Name	URL	Modality	License	Attribution	Access Method	Est. Size	Relevance (Boats/Parts)	Notes
+CO3D (Common Objects in 3D)
+c3se.chalmers.se
+GitHub: co3d / Dataset info (AI Meta)	Multi-view images + camera poses (real scenes)	CC BY-NC 4.0
+c3se.chalmers.se
+Yes (dataset authors)	Download links (GitHub/OneDrive)	250 GB (multiple subsets)	General objects (some “vehicle” classes, unclear if boats)	Non-commercial only
+c3se.chalmers.se
+; camera poses provided
+CO3D-V2 (Large)
+c3se.chalmers.se
+(Same site, expanded dataset)	Multi-view images	CC BY-NC 4.0
+c3se.chalmers.se
+Yes (dataset authors)	Same as CO3D	1 TB? (large version)	Similar to CO3D – generic objects, some transportation	Large-scale (millions of images); non-commercial restriction
+BlendedMVS
+github.com
+GitHub: YoYo000/BlendedMVS	Multi-view street scenes	CC BY 4.0
+github.com
+Yes (dataset authors)	Direct download links (OneDrive)	≥180 GB (low+high-res sets)	Outdoor scenes (urban); not boat-specific	High quality, large-scale; lens masks included
+DTU Multi-View Stereo
+roboimagedata.compute.dtu.dk
+DTU MVS site (AU): “freely available”	Multi-view object scans	(Free for research)	Implied (U. of Aarhus)	Direct download (no login)	~300 GB (all scans)	Indoor small objects (no boats)	No explicit license; research use only; original GT meshes
+Tanks & Temples
+tanksandtemples.org
+tanksandtemples.org
+tanksandtemples.org (requires sign-up)	Multi-view outdoor scenes	CC BY 4.0 but non-commercial only
+tanksandtemples.org
+tanksandtemples.org
+Yes (cite paper)	Login + download	~10–30 GB (per scene)	Real-world scenes (architecture, no boats)	Must cite; no derivatives without permission; non-commercial
+ETH3D
+eth3d.net
+eth3d.net	Multi-view MVS (indoor/outdoor)	CC BY-NC-SA 4.0
+eth3d.net
+Yes (dataset authors)	Download (no login)	~25 GB (train splits)	Scenes (facades, interiors); no boats	Non-commercial, share-alike; HDR photos included
+mip-NeRF 360	mipnerf.com	Multi-view panoramic scenes	Unknown (likely CC)	?	Download links (Google Storage)	~tens of GB	Misc real-world 360º scenes (no guarantee of boats)	No clear license info; use with caution
+MVImgNet	gaplab (GitHub)	Multi-view images (object categories)	MVImgNet ToU (likely NC)	Implied (site owners)	Request access (Flickr CC-BY images)	100s GB (6.5M images)	Diverse classes (includes vehicles, possibly some “boats”)	Terms unspecified; images from Flickr CC-BY; research only?
+Nerfstudio sample datasets
+docs.nerf.studio
+nerfstudio.com/projects	Various NeRF scenes	Varies (some CC BY-NC)	As per source (e.g. Eyeful Tower CC BY-NC)	Download via repo links	~<5 GB each	Some indoor/outdoor scenes (no boats); good for workflow testing	Eg. EyefulTower (CC BY-NC 4.0
+github.com
+)
+PhotoTourism (ETH)	(UBC Photo Tourism)	Internet images (various)	Copyrighted (no open license)	–	Manual download (if any)	–	Tourist landmarks (some water backgrounds)	Copyright status unclear – avoid automated use
+Objaverse (1.0)
+huggingface.co
+Hugging Face (allenai/objaverse)	3D meshes + PBR textures	ODC-By v1.0 (dataset)
+huggingface.co
+ + CC for each model (CC0, BY, BY-SA etc)	Yes (ODC-By, and per-model CC)	HF Datasets / API	~10s TB (800K models)	3D assets in 21K categories (likely includes boats/parts)	Large, diverse; can filter by license (CC0/BY); metadata rich
+Objaverse-XL
+github.com
+AllenAI GitHub (objaverse-xl)	3D meshes + textures	ODC-By v1.0 (dataset)
+github.com
+, per-model CC licenses	Yes (dataset & model)	HF or GitHub scripts	~100s TB (10M models)	Even more diverse (also sketchfab source)	Must request Polycam subset separately (non-commercial req)
+ShapeNetCore
+huggingface.co
+huggingface.co
+shapeNet.org / HF (requiring signup)	3D CAD models	ShapeNet terms (non-commercial research only)
+huggingface.co
+huggingface.co
+Yes (citation required)	Registration & download	~50 GB (v2, 51K models)	Many basic vehicle/boat models (some ships)	Strict ToU: no redistribution outside collaborators
+ABO (Amazon-Berkeley Objects)
+registry.opendata.aws
+registry.opendata.aws
+registry.opendata.aws/amazon-berkeley-objects	Product images + 3D glTF models	CC BY-NC 4.0
+registry.opendata.aws
+Yes (Amazon/Berkeley)	AWS S3 (no sign request)	~50–100 GB	Amazon product images (incl. 360° spins, some watercraft)	Non-commercial only; glTF models for 7,953 products
+Google Scanned Objects
+research.google
+research.google.com (Gazebo/OpenRobotics)	3D scanned objects (SDF/glTF)	CC BY 4.0
+research.google
+Yes (Google/ICRA paper)	Open Robotics Gazebo (Web)	~13 GB	Household items (unlikely boats)	High-quality scans; textures + physical properties
+Sketchfab CC Models
+sketchfab.com
+sketchfab.com
+sketchfab.com	3D models (glTF/FBX)	CC licenses (BY, BY-NC, etc)
+sketchfab.com
+sketchfab.com
+Yes (model authors)	API (login/key) / Download	>1 M models (many GB)	Many vehicle/boat models (filter CC0/BY via API)	Free library (1M+ CC models)
+sketchfab.com
+; API rate limits apply
+Kenney Pirate Kit
+kenney.nl
+kenney.nl/assets/pirate-kit	3D models + animations	CC0
+kenney.nl
+No (public domain)	Direct download (no login)	<100 MB	Pirate ship, boats, tropical props	CC0 – attribution not needed
+kenney.nl
+AmbientCG (CC0 Textures)
+ambientcg.com
+ambientcg.com	PBR textures (materials)	CC0
+ambientcg.com
+No	Direct download	~tens of GB	Wood, metal, water textures suitable for boats	Public domain; e.g. metal rust, wood grain (CC0)
+ambientcg.com
+Quaternius (Free kits)	quaternius.com	3D models (CC0)	CC0 (as stated on site)	No	Download (no login)	~GB scale	Game kits (e.g. Pirate, Sci-fi) including ships	Public domain (per site); includes CC0 “Pirate Kit”
+2. Licensing Matrix
+Source	Redistributable?	Derivatives?	Attribution?	ToS / API Limits	Risk Level
+CO3D	No (non-commercial)	Yes (NC license)	Yes (CC BY)	Must cite dataset; non-commercial; follow download limits.	Medium (NC)
+BlendedMVS	Yes (CC BY)	Yes	Yes (CC BY)	CC BY requires credit	Low
+DTU MVS	Unknown (research)	Unknown	Implied	No license info; use at own risk	High (unclear)
+Tanks & Temples	No (non-commercial)	No (restricts distribution)	Yes (cite)	Non-commercial research only
+tanksandtemples.org
+; no public redistribution.	High
+ETH3D	No (NC-SA)	Yes (SA)	Yes (CC BY-NC-SA)	Non-commercial; SA requires shared license
+eth3d.net
+Medium
+NeRFsample sets	Varies (some CC)	Varies	Yes (if CC BY)	Depends on source (e.g. Eyeful CC BY-NC
+github.com
+)	Low/Med
+PhotoTourism	No (copyright)	No	–	Prohibited for use without permission	Very High
+Objaverse	Yes (ODC-By)	Yes (as CC permits)	Yes (ODC-By + model CC)	Must credit AllenAI (ODC-By)
+huggingface.co
+; follow model licenses.	Low
+Objaverse-XL	Yes (ODC-By)	Yes (as CC permits)	Yes (ODC-By + model CC)	Data download requires script form; mixing with Polycam (non-commercial).	Medium
+ShapeNetCore	No (research only)	No (can't redistribute)	Yes (cite)	Only for approved non-commercial research
+huggingface.co
+huggingface.co
+High
+ABO (Amazon-Berkeley)	No (CC BY-NC)	Yes (NC license)	Yes (CC BY)	Non-commercial use; must give credit
+registry.opendata.aws
+; AWS CLI can fetch.	Medium
+GSO	Yes (CC BY)	Yes	Yes (CC BY)	CC BY, credit Google (paper)
+research.google
+Low
+Sketchfab (CC)	Yes (CC permits)	Yes (unless ND)	Yes (CC BY at least)	API requires login; rate limits. Many allow commercial
+sketchfab.com
+.	Low/Med
+Kenney Pirate Kit	Yes (CC0)	Yes	No (CC0)	Public domain
+kenney.nl
+; no restrictions.	Very Low
+AmbientCG Textures	Yes (CC0)	Yes	No (CC0)	Public domain
+ambientcg.com
+; high quality textures.	Very Low
+Quaternius	Yes (CC0)	Yes	No (CC0)	Public domain per site; no restrictions.	Very Low
+3. Prioritized Shortlist
+Objaverse subset (CC0/BY only): Objaverse provides a massive collection (800K+) of 3D models
+huggingface.co
+. We will filter for “boat”, “ship”, and nautical parts, using only permissively licensed objects (CC0/CC-BY/ODC-By)
+huggingface.co
+. Objaverse also includes textured GLBs and is easily accessible via Hugging Face and Python scripts. Its scale and license (ODC-By/CC) make it ideal for an initial asset pool.
+Kenney Pirate Kit (CC0)
+kenney.nl
+: This free asset pack explicitly contains ships, boats, and tropical props under CC0
+kenney.nl
+. We can immediately download it (no login) and extract its meshes (hulls, masts) and animations. Being CC0, it imposes no legal constraints.
+Sketchfab CC-licensed models: Using the Sketchfab Download API
+sketchfab.com
+, we can query for “boat”, “sailboat”, “propeller” etc., filtering for CC0 or CC-BY. Sketchfab hosts many boat/engine models (e.g. sailboats, motors) under CC licenses
+sketchfab.com
+sketchfab.com
+. These provide high-quality meshes/textures and, for CC-BY items, attribution text (we will record authors).
+AmbientCG textures (CC0)
+ambientcg.com
+: To ensure photorealistic PBR materials, we’ll source metal, wood, and fabric textures from ambientCG (all CC0
+ambientcg.com
+). For example, boat deck wood and rusted metal textures can be paired with our models. These are public domain and free for any use
+ambientcg.com
+.
+Amazon-Berkeley Objects (ABO)
+registry.opendata.aws
+: Although predominantly product images, ABO’s 8,209 spin-views and 7,953 glTF scans (CC BY-NC 4.0
+registry.opendata.aws
+) include some “Boating” and “Outdoor” categories. We’ll sample relevant 360° image sequences and 3D scans (subject to NC constraints) for additional test data.
+Own phone captures: Finally, we’ll add 3–5 of our own multi-view image sets of a small boat/part captured on phone. This ensures at least some in-domain data and helps the dual-agent pipeline adaption.
+Each chosen source balances license compliance and relevance. CC0/CC-BY assets (Kenney, AmbientCG, Sketchfab CC0/BY, Objaverse-ODCBy) are top priority. Non-commercial licenses (CO3D, ABO) are noted but less urgent due to reuse limits. We exclude data with strict no-distribution terms (e.g. ShapeNet, Tanks/Temples) from initial ingestion.
+4. Acquisition & Normalization Playbook
+Hugging Face (Objaverse): Install the HF Hub CLI/datasets library. Example (Windows PowerShell):
+pip install huggingface_hub datasets
+hf auth login                       # follow prompt to use API token
+# Using datasets in Python to download boat subset:
+python - <<EOF
+from datasets import load_dataset
+ds = load_dataset("allenai/objaverse", split="train")
+# Filter for "boat" or "ship"
+ds = ds.filter(lambda x: any(tag in x["text"] for tag in ["boat","ship"]))
+ds.push_to_hub("my-org/objaverse_boats")  # or download locally
+EOF
+This yields images/ and mesh/ data. Metadata from HF includes license info.
+Sketchfab API (download CC models)
+sketchfab.com
+: Acquire a free Sketchfab API token (register/login). Use Python or CLI to query and download:
+import requests, os
+TOKEN = "<your_sketchfab_api_token>"
+headers = {"Authorization": f"Token {TOKEN}"}
+# Search for free boat models (CC0 or CC-BY only)
+params = {"q": "boat", "downloadable": "true", "license": "cc0|by", "type": "models"}
+res = requests.get("https://api.sketchfab.com/v3/models", params=params, headers=headers)
+models = res.json()["results"]
+for m in models[:5]:
+    dl = requests.get(m["download"], headers=headers).json()
+    if "gltf" in dl:
+        url = dl["gltf"]
+        os.system(f'curl -L "{url}" -o {m["name"]}.glb')
+This downloads up to 5 example boat models (GLB). Respect API rate limits (use brief sleeps or batching). Attribution info is in m["user"].
+AWS Open Data (ABO)
+registry.opendata.aws
+: ABO is on AWS Public Datasets. Using AWS CLI (no account needed):
+aws s3 ls --no-sign-request s3://amazon-berkeley-objects/  # list contents:contentReference[oaicite:66]{index=66}
+aws s3 cp --no-sign-request s3://amazon-berkeley-objects/product_images/boat/boat1.zip C:\Data\raw\
+aws s3 cp --no-sign-request s3://amazon-berkeley-objects/models/boat/boat1.glb C:\Data\raw\
+(Replace paths with actual object keys after listing.) Copy images and glTF into C:\Data\raw\.
+Kenney Assets: Download zip from Kenney (e.g. Pirate Kit
+kenney.nl
+). Unzip into C:\Data\raw\KenneyPirate\. Copy its .blend/.fbx/.obj files to normalization pipeline.
+AmbientCG Textures: Browse ambientCG CC0 library
+ambientcg.com
+, download relevant textures (e.g. wood, metal). Place in C:\Data\raw\textures\.
+Normalization (Windows):
+Multi-view images: For each object folder: ensure images are in images/. Use COLMAP (CLI) to reconstruct camera poses:
+colmap.exe feature_extractor --database_path C:\Data\workspace\db.sqlite --image_path C:\Data\raw\images\
+colmap.exe exhaustive_matcher --database_path C:\Data\workspace\db.sqlite
+colmap.exe mapper --database_path C:\Data\workspace\db.sqlite --image_path C:\Data\raw\images\ --output_path C:\Data\workspace\sparse\
+colmap.exe model_converter --input_path C:\Data\workspace\sparse\0 --output_path C:\Data\workspace\sparse\ --output_type TXT
+This outputs cameras.txt (intrinsics) and images.txt (poses)
+colmap.github.io
+colmap.github.io
+. Convert these into cameras.json (collect intrinsics, and compute camera-to-world matrices from the quaternions in images.txt). Collect metadata (source, license) into metadata.json.
+3D assets: For each downloaded model: convert to GLB with textures if needed (e.g. using Blender or obj2gltf). Structure as mesh.glb + textures/. Create metadata.json (scale=meters, license, source, checksum).
+Instruction JSONL: Manually craft LLM “messages” JSONL entries for Windows-specific steps (PowerShell commands as above, exact paths). Include instructions like “run colmap.exe from path X,” specifying VRAM limits (RTX2070 ~ 8GB). Use official docs for syntax (citing COLMAP docs [80†L134-L142][82†L168-L177]).
+Quality Checks: Include automated checks:
+Image resolution: Ensure images ≥ 1080p (ideally ≥4K) for good detail. (Photogrammetry best practices recommend high-res photos.)
+Pose completeness: Verify camera coverage ~360° around object if possible (check camera count).
+Mesh quality: Check watertightness via Blender (use bpy.ops.mesh.select_non_manifold()). If not watertight, apply mesh filling.
+Texture presence: All models should have diffuse, normal, etc. Bake missing maps in Blender CLI.
+Duplicates: Hash images (e.g. ImageHash) to avoid near-duplicates.
+Bias: Ensure varied lighting/background by combining indoor/outdoor sources.
+Reconstruction Wrappers (Windows CLI):
+COLMAP: Commands above, output sparse/meshed results (fused.ply).
+Instant-NGP: Use Windows build (download from NVlabs) via PowerShell:
+instant-ngp-windows.exe --scene=C:\Data\workspace\sparse --save_mesh=C:\Data\workspace\instant_mesh.obj
+Nerfstudio: If using NeRF: run ns-process-data colmap to convert COLMAP to Nerfstudio JSON, then ns-train --scene.
+Blender CLI: Decimate and unwrap:
+blender --background --python-expr "import bpy; bpy.ops.import_scene.gltf(filepath='C:/Data/normalized/mesh.glb'); bpy.ops.object.decimate(ratio=0.5); bpy.ops.export_scene.fbx(filepath='C:/Data/normalized/mesh_decimated.fbx')"
+Then UV unwrap and bake PBR: use Blender Python scripts or addons (e.g. Blender’s PBR Baker) via CLI.
+5. Unity Import Checklist
+glTF Import: Use Unity 2021+ with the glTFast package (supports URP/HDRP/Built-in)
+docs.unity3d.com
+. Simply drag the .glb/.gltf into Assets; glTFast will create GameObjects with MeshRenderers and PBR Materials (metallic-roughness).
+Scale/Units: Unity assumes 1 unit = 1 meter (as does glTF). Ensure imported models are at correct scale. If needed, adjust transform scale so that real-world dimensions match (e.g. a 2m boat should appear 2m in Unity).
+PBR Materials: Verify that the imported Materials have the correct texture maps (Albedo, Metallic, Normal, etc.). glTFast handles this automatically
+docs.unity3d.com
+. Set Material Workflow to “Metallic” (glTF uses metallic-roughness).
+Colliders: Add appropriate colliders (MeshCollider for hulls, BoxCollider for simple parts). For complex models, consider simplified collider meshes or convex colliders.
+Performance:
+Mark static geometry (boatyard, harbor) as Static for batching if possible.
+Check draw calls and poly count in a test scene. Aim for ≤50k verts per mesh for mobile/desktop. Use LOD or decimation as needed.
+Test on target hardware to ensure stable FPS. Consider Unity Profiler.
+Testing: Place models in a simple scene with water plane and lighting. Confirm textures look correct (e.g. metal is shiny). Use Unity’s Scene view to inspect normals (no invert).
+Attribution: For CC-BY assets, include an “About” panel or credits file in the build with author name and license link.
+6. PoC Proposal (Assets to Ingest Today)
+Kenney Pirate Kit (CC0) – contains full 3D ship/boat models
+kenney.nl
+. Download and import ship.obj and textures; no license text needed. We’ll reconstruct and texture at least one ship hull end-to-end.
+AmbientCG Boat Textures (CC0) – e.g. “Cracked Painted Metal” and “Weathered Wood” from ambientCG
+ambientcg.com
+. These CC0 PBR textures will be applied to a model in Unity to verify material pipeline.
+Sketchfab CC-BY Sailboat Model – use Sketchfab’s API to grab a free CC-BY sailboat (for example, user “JohnDoe” sailboat)
+sketchfab.com
+. This tests the API download and CC-BY attribution workflow.
+(Optional) Phone-Captured Part: A quick 50-photo set of a boat motor or propeller. Run COLMAP to generate its textured mesh. This confirms our on-device photo pipeline.
+These assets will be run through the download → normalize → Unity import pipeline as a proof of concept. All have clear, permissive licenses (CC0/CC-BY)
+kenney.nl
+ambientcg.com
+sketchfab.com
+ and represent “boats or parts.” Their successful end-to-end ingestion will validate our approach. Sources: Verified dataset licenses and terms
+c3se.chalmers.se
+tanksandtemples.org
+huggingface.co
+research.google
+sketchfab.com
+kenney.nl
+ambientcg.com
+ were used to assemble the above plan. Each recommendation cites authoritative documentation or dataset pages to ensure compliance and accuracy.
+Citations
+
+Datasets - C3SE
+
+https://www.c3se.chalmers.se/documentation/software/machine_learning/datasets/
+
+GitHub - YoYo000/BlendedMVS: BlendedMVS: A Large-scale Dataset for Generalized Multi-view Stereo Networks
+
+https://github.com/YoYo000/BlendedMVS
+MVS Data Set – 2014 | DTU Robot Image Data Sets
+
+https://roboimagedata.compute.dtu.dk/?page_id=36
+
+Tanks and Temples Benchmark
+
+https://www.tanksandtemples.org/license/
+
+Tanks and Temples Benchmark
+
+https://www.tanksandtemples.org/license/
+
+ETH3D
+
+https://www.eth3d.net/
+Using existing data - nerfstudio
+
+https://docs.nerf.studio/quickstart/existing_dataset.html
+
+GitHub - facebookresearch/EyefulTower: Official release of the Eyeful Tower dataset, a high-fidelity multi-view capture of 11 real-world scenes, from the paper “VR-NeRF High-Fidelity Virtualized Walkable Spaces” (Xu et al., SIGGRAPH Asia 2023).
+
+https://github.com/facebookresearch/EyefulTower
+
+allenai/objaverse · Datasets at Hugging Face
+
+https://huggingface.co/datasets/allenai/objaverse
+
+GitHub - allenai/objaverse-xl: Objaverse-XL is a Universe of 10M+ 3D Objects. Contains API Scripts for Downloading and Processing!
+
+https://github.com/allenai/objaverse-xl
+
+ShapeNet/ShapeNetCore · Datasets at Hugging Face
+
+https://huggingface.co/datasets/ShapeNet/ShapeNetCore
+
+ShapeNet/ShapeNetCore · Datasets at Hugging Face
+
+https://huggingface.co/datasets/ShapeNet/ShapeNetCore
+
+Amazon Berkeley Objects Dataset - Registry of Open Data on AWS
+
+https://registry.opendata.aws/amazon-berkeley-objects/
+
+Amazon Berkeley Objects Dataset - Registry of Open Data on AWS
+
+https://registry.opendata.aws/amazon-berkeley-objects/
+
+Scanned Objects by Google Research: A Dataset of 3D-Scanned Common Household Ite
+
+https://research.google/blog/scanned-objects-by-google-research-a-dataset-of-3d-scanned-common-household-items/
+
+An Introduction to Creative Commons Licenses - Sketchfab Community Blog - Sketchfab Community Blog
+
+https://sketchfab.com/blogs/community/an-introduction-to-creative-commons-licenses/
+
+Download API - Developers - Sketchfab
+
+https://sketchfab.com/developers/download-api
+
+Pirate Kit · Kenney
+
+https://kenney.nl/assets/pirate-kit
+
+ambientCG - Free Textures, HDRIs and Models
+
+https://ambientcg.com/
+
+Amazon Berkeley Objects Dataset - Registry of Open Data on AWS
+
+https://registry.opendata.aws/amazon-berkeley-objects/
+Output Format — COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation
+
+https://colmap.github.io/format.html
+Output Format — COLMAP 3.13.0.dev0 | a5332f46 (2025-07-05) documentation
+
+https://colmap.github.io/format.html
+
+Features | Unity glTFast | 6.5.0
+
+https://docs.unity3d.com/Packages/com.unity.cloud.gltfast@6.5/manual/features.html
+All Sources
+
+c3se.chalmers
+
+github
+roboimag...mpute.dtu
+
+tanksandtemples
+
+eth3d
+docs.nerf
+
+huggingface
+
+registry.opendata
+
+research
+
+sketchfab
+
+kenney
+
+ambientcg
+colmap.github
+
+docs.unity3d

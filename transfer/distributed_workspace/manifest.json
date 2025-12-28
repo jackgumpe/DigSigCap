@@ -1,0 +1,23 @@
+{
+  "project": "Distributed Cognitive Workspace",
+  "primary_llm": "Gemini CLI",
+  "secondary_llm": "DeepSeek",
+  "core_concepts": [
+    "Hierarchical Memory",
+    "Multi-Agent Orchestration",
+    "SHL",
+    "TOON",
+    "Dataset Generation",
+    "Graph + Vector Retrieval"
+  ],
+  "layers": [
+    "Human",
+    "Orchestration",
+    "Agents",
+    "Memory",
+    "Optimization",
+    "Datasets",
+    "Governance"
+  ],
+  "status": "Blueprint complete, master prompt in progress"
+}

@@ -1,0 +1,48 @@
+# JIHUB - JobIntel Hub Dependencies
+# ==================================
+
+# Database
+duckdb>=0.9.0
+
+# Document Processing
+pdfplumber>=0.10.0
+python-docx>=1.0.0
+docxtpl>=0.16.0  # DOCX template rendering
+
+# PDF Generation (optional)
+reportlab>=4.0.0
+weasyprint>=60.0  # Requires system dependencies
+
+# Web Scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# AI APIs
+google-generativeai>=0.3.0  # Gemini API
+
+# Data Processing
+pandas>=2.0.0
+pyarrow>=14.0.0  # Parquet support
+
+# Utilities
+python-dateutil>=2.8.0
+tqdm>=4.66.0  # Progress bars
+
+# Media Processing (for Field Intel)
+# pillow>=10.0.0  # Image processing
+# pydub>=0.25.0  # Audio processing (requires ffmpeg)
+# moviepy>=1.0.3  # Video processing
+
+# GUI (uncomment based on choice)
+# PyQt6>=6.6.0  # If using PyQt
+# Tauri handled separately via npm/cargo
+
+# Development
+pytest>=7.4.0
+black>=23.0.0
+mypy>=1.0.0
+
+# Optional: Local LLM support
+# llama-cpp-python>=0.2.0
+# transformers>=4.35.0

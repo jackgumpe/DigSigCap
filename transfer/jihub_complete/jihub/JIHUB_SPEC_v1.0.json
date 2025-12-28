@@ -1,0 +1,511 @@
+{
+  "meta": {
+    "document_type": "project_specification_final",
+    "version": "1.0",
+    "status": "IMPLEMENTATION_READY",
+    "contributors": ["jack", "claude_opus_4.5", "deepseek_v3"],
+    "created": "2025-12-17",
+    "last_updated": "2025-12-17",
+    "shl_note": "Light-medium SHL for agent comms, pipe-delimited format",
+    "starter_code_created": true
+  },
+
+  "project": {
+    "name": "JobIntel Hub",
+    "codename": "JIHUB",
+    "version": "0.1",
+    "platform": "Windows Desktop",
+    "core_purpose": "Resume intelligence + job market investigation + ghost job fraud detection",
+    "mission": "Accountability for companies falsifying hiring activity to secure funding. Support government audits and enable lawsuits against economic leeches.",
+    "github_structure": {
+      "root": "jihub/",
+      "database": "jihub/database/",
+      "agents": "jihub/agents/",
+      "scrapers": "jihub/scrapers/",
+      "gui": "jihub/gui/",
+      "exports": "jihub/exports/",
+      "tests": "jihub/tests/"
+    }
+  },
+
+  "stakeholder": {
+    "developer": "Jack",
+    "location": "Port St. Lucie County, Florida, USA",
+    "role": "Independent investigative journalist",
+    "background": {
+      "education": "CS student at Eastern Florida State College (graduating next semester)",
+      "technical_skills": ["C", "C++", "C#", "Unity", "ASP.NET", "Python"],
+      "interests": ["AI research", "cybersecurity", "game development"],
+      "related_projects": ["SHL language development", "ShearwaterAICAD", "Phone Codex"]
+    },
+    "ethics": {
+      "will_not_charge": true,
+      "reason": "Against ethical duties as independent investigative journalist",
+      "interview_protocol": "Will conduct interviews but decline all job offers - data collection only"
+    }
+  },
+
+  "business_model": {
+    "product_sold": "NONE - open source assessments",
+    "product_not_sold": ["app_itself", "individual_raw_data"],
+    "open_source_component": "assessments_and_methodology",
+    "closed_component": "app_tooling",
+    "data_verification": "trusted_independent_third_party",
+    "intended_users": ["government_auditors", "legal_teams_for_lawsuits", "journalists", "public_accountability"],
+    "revenue": "none_intended"
+  },
+
+  "legal_considerations": {
+    "jurisdiction": "Florida, USA",
+    "county": "St. Lucie County",
+    "florida_specifics": {
+      "recording_law": "Two-party consent (Fla. Stat. § 934.03)",
+      "public_photography": "Generally allowed from public spaces",
+      "journalist_protections": "Shield law (Fla. Stat. § 90.5015)"
+    },
+    "required_actions": [
+      "CONSULT_FLORIDA_ATTORNEY_BEFORE_FIELD_INTEL_MODULE",
+      "Obtain written consent for all recordings",
+      "Implement metadata scrubber before storage",
+      "Contact Florida First Amendment Foundation before publication"
+    ],
+    "metadata_policy": {
+      "photos_from_public": "Safe - avoid identifiable individuals without consent",
+      "audio": "Written consent REQUIRED - Florida is all-party consent state",
+      "gps_data": "Scrub if near private residences",
+      "timestamps": "Generally safe to retain",
+      "device_info": "Hash identifiers, don't store raw"
+    }
+  },
+
+  "implementation_roadmap": {
+    "phase_1": {
+      "name": "Core Foundation",
+      "modules": ["resume_engine", "basic_storage", "shl_protocol"],
+      "timeline": "2-3 weeks",
+      "milestones": ["resume_parsing", "gemini_integration", "duckdb_setup", "agent_communication"],
+      "deliverables": ["Working resume transformer", "Database with schema", "SHL messaging"],
+      "starter_code": ["database/schema.py", "agents/resume_agent.py", "agents/shl_protocol.py"]
+    },
+    "phase_2": {
+      "name": "Data Pipeline",
+      "modules": ["scraper_engine", "enhanced_storage", "overseer_agent"],
+      "timeline": "3-4 weeks",
+      "milestones": ["indeed_scraper", "linkedin_scraper", "data_normalization", "batch_processing", "task_orchestration"],
+      "deliverables": ["Automated job collection", "Normalized data storage", "Central orchestration"],
+      "starter_code": ["agents/overseer_agent.py"]
+    },
+    "phase_3": {
+      "name": "Intelligence Layer",
+      "modules": ["analytics_engine_basic", "agent_framework_complete"],
+      "timeline": "3-4 weeks",
+      "milestones": ["metrics_calculation", "ghost_job_scoring", "full_agent_ecosystem"],
+      "deliverables": ["Ghost job scoring", "Fraud risk assessment"]
+    },
+    "phase_4": {
+      "name": "Field Operations",
+      "modules": ["field_intel_light", "report_generation"],
+      "timeline": "4-5 weeks",
+      "milestones": ["notes_capture", "basic_photo_processing", "report_templates", "metadata_scrubber"],
+      "deliverables": ["Field data collection", "Assessment reports"],
+      "prerequisite": "LEGAL_CONSULTATION_COMPLETE"
+    },
+    "phase_5": {
+      "name": "Advanced Features",
+      "modules": ["advanced_analytics", "full_media_processing", "export_system", "gui_complete"],
+      "timeline": "4-6 weeks",
+      "milestones": ["video_analysis", "audio_transcription", "audit_package_export", "tauri_gui"],
+      "deliverables": ["Full media processing", "Audit-ready exports", "Complete desktop app"]
+    },
+    "total_estimated_time": "16-22 weeks",
+    "critical_path": "resume_engine → scraper_engine → storage → analytics → field_intel",
+    "parallel_tracks": ["agent_framework", "gui_prototype"]
+  },
+
+  "modules": {
+    "resume_engine": {
+      "description": "AI-powered resume transformation preserving user-selected attributes",
+      "api": "gemini",
+      "status": "STARTER_CODE_CREATED",
+      "file": "agents/resume_agent.py",
+      "definitions": {
+        "structure": "Section order and hierarchy (e.g., Education before/after Experience)",
+        "format": "Layout, columns, margins, fonts, spacing, visual arrangement",
+        "style": "Tone, word choice, bullet vs paragraph, formal vs casual language"
+      },
+      "transformation_matrix": {
+        "content_swap": {"keep": ["style", "format", "structure"], "change": ["content"]},
+        "format_swap": {"keep": ["content"], "change": ["format", "style", "structure"]},
+        "style_swap": {"keep": ["content", "format"], "change": ["style"]},
+        "structure_swap": {"keep": ["content", "style"], "change": ["structure"]},
+        "hybrid": "User-defined combination via UI toggles"
+      },
+      "technical_approach": {
+        "method": "hybrid_template_system",
+        "workflow": [
+          "1. Parse input (PDF/DOCX) → extract content and formatting metadata",
+          "2. Create template object with placeholders and style descriptors",
+          "3. Send content + transformation instructions to Gemini",
+          "4. Receive transformed content → inject into template",
+          "5. Render final document using template engine",
+          "6. Validate with visual diff if possible"
+        ],
+        "libraries": {
+          "parsing": ["pdfplumber", "python-docx"],
+          "rendering": ["docxtpl", "reportlab", "weasyprint"],
+          "validation": ["difflib", "image_diff"]
+        },
+        "gemini_prompt_format": "Return JSON: {sections: [{type, content, original_formatting}]}",
+        "fallback": "Clean reformatting if format preservation fails 3x"
+      },
+      "input_formats": ["pdf", "docx"],
+      "output_formats": ["pdf", "docx"],
+      "priority": "HIGH"
+    },
+
+    "scraper_engine": {
+      "description": "Job posting collection from public sources",
+      "status": "TO_BE_BUILT",
+      "sources": ["indeed", "linkedin_public", "google_jobs", "glassdoor", "snagajob"],
+      "data_points": [
+        "company_name", "job_title", "location", "posted_date", "description",
+        "salary_range", "requirements", "application_count_if_visible",
+        "company_size_claims", "funding_mentions"
+      ],
+      "processing": "bot_local",
+      "scheduling": "on_demand_with_batch_option",
+      "optimization": "incremental_scraping_only_changed_postings",
+      "rate_limiting": "2_seconds_between_requests_per_source"
+    },
+
+    "field_intel": {
+      "description": "On-ground investigation data collection and processing",
+      "status": "PENDING_LEGAL_CONSULTATION",
+      "prerequisite": "LEGAL_CONSULTATION_COMPLETE",
+      "data_types": {
+        "notes": {"format": ["text", "markdown"], "processing": "bot", "storage": "local_db"},
+        "photos": {
+          "format": ["jpg", "png", "heic"],
+          "processing": "api",
+          "tasks": ["ocr", "scene_analysis", "occupancy_estimation", "signage_detection"],
+          "metadata_policy": "scrub_gps_hash_device_keep_timestamp"
+        },
+        "audio": {
+          "format": ["mp3", "wav", "m4a"],
+          "processing": "api",
+          "tasks": ["transcription", "sentiment_analysis", "speaker_identification"],
+          "legal_requirement": "WRITTEN_CONSENT_REQUIRED_FLORIDA_TWO_PARTY"
+        },
+        "video": {
+          "format": ["mp4", "mov"],
+          "processing": "api",
+          "tasks": ["transcription", "frame_analysis", "activity_detection", "people_counting"],
+          "legal_requirement": "WRITTEN_CONSENT_REQUIRED_FLORIDA_TWO_PARTY"
+        },
+        "interviews": {
+          "format": "structured_form_plus_recording",
+          "processing": "api",
+          "ethical_protocol": {"offers_declined": true, "consent_form": "REQUIRED"}
+        }
+      },
+      "metadata_scrubber": {
+        "default_behavior": "conservative",
+        "rules": {
+          "gps": "remove_if_near_private_residence",
+          "timestamps": "keep",
+          "device_info": "hash_not_raw",
+          "exif": "selective_removal"
+        },
+        "logging": "all_decisions_logged_for_audit"
+      }
+    },
+
+    "analytics_engine": {
+      "description": "Data analysis, metrics, predictions, fraud scoring",
+      "status": "TO_BE_BUILT",
+      "inputs": ["scraper_data", "field_intel", "resume_context", "public_records"],
+      "outputs": {
+        "metrics": [
+          "posting_freshness_score",
+          "company_activity_score",
+          "hiring_velocity",
+          "ghost_job_probability",
+          "online_vs_physical_discrepancy"
+        ],
+        "predictions": [
+          "company_legitimacy_score",
+          "funding_fraud_risk",
+          "growth_trajectory_validity",
+          "audit_priority_ranking"
+        ],
+        "reports": [
+          "individual_company_assessment",
+          "sector_analysis",
+          "regional_patterns",
+          "exportable_audit_package"
+        ]
+      },
+      "processing_toggle": {
+        "bot": {"use_case": "lightweight_fast_cheap", "runs": "local"},
+        "api": {"use_case": "nuanced_complex_analysis", "runs": "gemini"}
+      },
+      "ui_element": "two_button_toggle_per_task"
+    },
+
+    "storage": {
+      "type": "local_first",
+      "primary": "duckdb",
+      "status": "STARTER_CODE_CREATED",
+      "file": "database/schema.py",
+      "schema": {
+        "companies": {
+          "columns": "id UUID PK, name TEXT, domain TEXT, claimed_size TEXT, claimed_funding NUMERIC, first_seen DATE, last_verified DATE, address TEXT, ghost_score NUMERIC(5,2), audit_priority INTEGER, metadata JSON",
+          "indexes": ["name", "ghost_score DESC", "audit_priority DESC"]
+        },
+        "job_postings": {
+          "columns": "id UUID PK, company_id UUID FK, title TEXT, location TEXT, posted_date DATE, scraped_date DATE, description TEXT, salary_min NUMERIC, salary_max NUMERIC, application_count INTEGER, source TEXT, url TEXT UNIQUE, freshness_score NUMERIC(5,2), is_active BOOLEAN",
+          "indexes": ["company_id", "posted_date DESC", "freshness_score DESC"],
+          "partitioning": "BY YEAR(posted_date)"
+        },
+        "field_observations": {
+          "columns": "id UUID PK, company_id UUID FK, observation_timestamp TIMESTAMP, observation_type TEXT, media_path TEXT, transcript TEXT, occupancy_estimate INTEGER, employee_count_observed INTEGER, activity_level TEXT, confidence_score NUMERIC(5,2), legal_release_obtained BOOLEAN, metadata JSON",
+          "indexes": ["company_id", "observation_timestamp DESC", "observation_type"],
+          "partitioning": "BY MONTH(observation_timestamp)"
+        },
+        "resume_versions": {
+          "columns": "id UUID PK, original_hash TEXT, transform_type TEXT, transform_params JSON, output_path TEXT, content_hash TEXT, format_preservation_score NUMERIC(5,2), applied_to_jobs UUID[], interview_invite_rate NUMERIC(5,2)",
+          "indexes": ["created_at DESC", "interview_invite_rate DESC"]
+        },
+        "assessments": {
+          "columns": "id UUID PK, company_id UUID FK, assessment_date TIMESTAMP, ghost_probability NUMERIC(5,2), discrepancy_score NUMERIC(5,2), fraud_risk NUMERIC(5,2), audit_priority_ranking INTEGER, evidence_refs JSON, exported BOOLEAN, export_path TEXT",
+          "indexes": ["company_id", "ghost_probability DESC", "assessment_date DESC"],
+          "partitioning": "BY MONTH(assessment_date)"
+        },
+        "agent_messages": {
+          "columns": "id UUID PK, message_timestamp TIMESTAMP, agent_from TEXT, agent_to TEXT, task_id TEXT, action TEXT, params JSON, priority TEXT, status TEXT, output_ref TEXT, processing_time_ms INTEGER, error_code TEXT, error_message TEXT, raw_shl_message TEXT",
+          "indexes": ["message_timestamp DESC", "task_id", "agent_from"]
+        },
+        "api_usage": {
+          "columns": "id UUID PK, usage_timestamp TIMESTAMP, api_name TEXT, tokens_input INTEGER, tokens_output INTEGER, cost_estimate NUMERIC(10,6), task_id TEXT, agent_name TEXT, success BOOLEAN",
+          "indexes": ["usage_timestamp DESC", "api_name"]
+        }
+      },
+      "export_formats": ["parquet", "csv", "json"],
+      "encryption": "sqlcipher_recommended",
+      "backup": "regular_encrypted_to_external"
+    }
+  },
+
+  "architecture": {
+    "gui": {
+      "framework": "tauri",
+      "rationale": "Rust backend performance, web frontend flexibility, lighter than Electron",
+      "alternative": "pyqt_if_tauri_too_complex",
+      "design_principle": "functional_over_pretty",
+      "status": "TO_BE_BUILT"
+    },
+
+    "ai_stack": {
+      "primary_api": "gemini",
+      "model": "gemini-pro",
+      "use_cases": ["resume_transforms", "media_processing", "complex_analysis"],
+      "fallback_api": "TBD",
+      "local_models": {
+        "candidates": ["deepseek_v3_lite", "llama_local"],
+        "use_case": "offline_mode_and_cost_savings"
+      },
+      "cost_control": {
+        "caching": "Cache similar resume transformations",
+        "budget_manager": "Real-time usage tracking with alerts",
+        "fallback_trigger": "Switch to local model when budget threshold hit",
+        "alert_threshold_dollars": 10.0
+      }
+    },
+
+    "offline_mode": {
+      "enabled": true,
+      "behavior": "force_all_bot_processing",
+      "fallback": "queue_api_tasks_for_when_online"
+    },
+
+    "agents": {
+      "architecture": "orchestrator_with_specialist_agents",
+      "status": "STARTER_CODE_CREATED",
+      "files": ["agents/overseer_agent.py", "agents/shl_protocol.py", "agents/resume_agent.py"],
+      "orchestrator": {
+        "name": "OverseerAgent",
+        "role": "error_correction_and_task_routing",
+        "authority": "can_halt_retry_redirect_any_agent",
+        "health_monitoring": "heartbeat_to_all_agents",
+        "max_retries": 3,
+        "backoff_strategy": "exponential_with_jitter"
+      },
+      "specialist_agents": [
+        {"name": "ResumeAgent", "domain": "resume_transformation", "tools": ["gemini_api", "document_parsers"], "status": "STARTER_CODE_CREATED"},
+        {"name": "ScraperAgent", "domain": "job_posting_collection", "tools": ["web_scrapers", "rate_limiters"], "status": "TO_BE_BUILT"},
+        {"name": "FieldIntelAgent", "domain": "media_processing", "tools": ["gemini_api", "transcription", "image_analysis", "metadata_scrubber"], "status": "PENDING_LEGAL"},
+        {"name": "AnalystAgent", "domain": "predictions_and_scoring", "tools": ["duckdb", "gemini_api", "local_ml"], "status": "TO_BE_BUILT"},
+        {"name": "ReportAgent", "domain": "assessment_generation", "tools": ["templates", "export_formatters"], "status": "TO_BE_BUILT"}
+      ],
+      "communication": {
+        "protocol": "SHL_light_pipe_delimited",
+        "status": "STARTER_CODE_CREATED",
+        "file": "agents/shl_protocol.py",
+        "format": "agent_from|agent_to|task_id|action|params|priority",
+        "message_types": {
+          "request": "ResumeAgent|Overseer|res_456|request|{\"task_type\":\"transform\"}|high",
+          "response": "ResumeAgent|Overseer|res_456|response|success|duckdb:transformed:789|0.94|1250",
+          "error": "ScraperAgent|Overseer|scrape_56|error|RATE_LIMIT|429_indeed|yes|no"
+        },
+        "actions": ["request", "response", "error", "status_update", "human_intervention"],
+        "error_handling": {
+          "max_retries": 3,
+          "backoff": "exponential_with_jitter",
+          "circuit_breaker": "after_3_failures_queue_for_human"
+        },
+        "logging": "all_messages_stored_locally_for_audit"
+      },
+      "human_in_loop": {
+        "checkpoints": [
+          "before_api_calls_over_cost_threshold",
+          "before_report_finalization",
+          "on_low_confidence_predictions",
+          "on_repeated_failures"
+        ]
+      }
+    },
+
+    "security": {
+      "encryption_at_rest": "sqlcipher_for_duckdb_recommended",
+      "sensitive_data": "hash_identifiers_dont_store_raw",
+      "backups": "encrypted_to_external_storage",
+      "field_data": "consider_veracrypt_container"
+    }
+  },
+
+  "shl_integration": {
+    "usage_areas": [
+      "agent_to_agent_communication",
+      "json_prompt_formatting",
+      "audit_logs",
+      "report_generation_instructions"
+    ],
+    "tier": "light_to_medium",
+    "format": "pipe_delimited",
+    "status": "STARTER_CODE_CREATED",
+    "file": "agents/shl_protocol.py",
+    "benefits": [
+      "token_cost_reduction",
+      "structured_machine_readable_comms",
+      "human_auditable_trail"
+    ],
+    "spec_reference": "Jack's SHL documentation (separate project)"
+  },
+
+  "starter_code_inventory": {
+    "created": [
+      {
+        "file": "database/schema.py",
+        "description": "DuckDB schema setup with all tables, indexes, partitioning, and export functions",
+        "status": "READY",
+        "usage": "python schema.py --init"
+      },
+      {
+        "file": "agents/resume_agent.py",
+        "description": "ResumeAgent with PDF/DOCX parsing, Gemini transformation, and rendering",
+        "status": "READY",
+        "usage": "python resume_agent.py interactive"
+      },
+      {
+        "file": "agents/shl_protocol.py",
+        "description": "SHL communication protocol with message types, validation, and logging",
+        "status": "READY",
+        "usage": "python shl_protocol.py (runs tests)"
+      },
+      {
+        "file": "agents/overseer_agent.py",
+        "description": "OverseerAgent orchestrator with task routing, error handling, checkpoints",
+        "status": "READY",
+        "usage": "python overseer_agent.py --demo"
+      },
+      {
+        "file": "requirements.txt",
+        "description": "Python dependencies for the project",
+        "status": "READY",
+        "usage": "pip install -r requirements.txt"
+      }
+    ],
+    "to_be_created": [
+      "scrapers/indeed_scraper.py",
+      "scrapers/linkedin_scraper.py",
+      "agents/scraper_agent.py",
+      "agents/analyst_agent.py",
+      "agents/report_agent.py",
+      "agents/field_intel_agent.py",
+      "gui/main.py (Tauri or PyQt)"
+    ]
+  },
+
+  "decisions_log": {
+    "confirmed": [
+      {"item": "Gemini as primary API", "by": "Jack", "date": "2025-12-17"},
+      {"item": "DuckDB for storage with full schema", "by": "Claude + DeepSeek + Jack", "date": "2025-12-17"},
+      {"item": "Tauri for GUI framework", "by": "Claude", "date": "2025-12-17"},
+      {"item": "OverseerAgent for error-correction orchestration", "by": "Jack", "date": "2025-12-17"},
+      {"item": "Offline mode enabled with task queueing", "by": "Jack", "date": "2025-12-17"},
+      {"item": "Open source assessments only", "by": "Jack", "date": "2025-12-17"},
+      {"item": "No revenue model - journalism ethics", "by": "Jack", "date": "2025-12-17"},
+      {"item": "Style/Format/Structure definitions", "by": "mutual_agreement", "date": "2025-12-17"},
+      {"item": "Build order: Resume → Scraper → Storage → Analytics → Field", "by": "DeepSeek", "date": "2025-12-17"},
+      {"item": "SHL-light pipe-delimited agent comms", "by": "DeepSeek", "date": "2025-12-17"},
+      {"item": "Hybrid template approach for resume transformation", "by": "DeepSeek", "date": "2025-12-17"},
+      {"item": "Metadata scrubber required for field data", "by": "DeepSeek", "date": "2025-12-17"},
+      {"item": "Two-party consent required for Florida recordings", "by": "Florida_law", "date": "2025-12-17"},
+      {"item": "Human checkpoints before API costs and report finalization", "by": "Claude + DeepSeek", "date": "2025-12-17"}
+    ],
+    "pending": [
+      "Florida attorney consultation (REQUIRED before Phase 4)",
+      "Specific encryption implementation details",
+      "Local model selection after testing (DeepSeek-V3 vs Llama)",
+      "API cost threshold amounts",
+      "Third-party verification partner"
+    ]
+  },
+
+  "immediate_next_steps": {
+    "step_1": {
+      "action": "Set up development environment",
+      "commands": [
+        "mkdir -p jihub/{database,agents,scrapers,gui,exports,tests}",
+        "pip install -r requirements.txt",
+        "export GEMINI_API_KEY='your_key_here'"
+      ]
+    },
+    "step_2": {
+      "action": "Initialize database",
+      "command": "cd jihub && python database/schema.py --init"
+    },
+    "step_3": {
+      "action": "Test ResumeAgent",
+      "command": "python agents/resume_agent.py interactive"
+    },
+    "step_4": {
+      "action": "Test SHL protocol",
+      "command": "python agents/shl_protocol.py"
+    },
+    "step_5": {
+      "action": "Test OverseerAgent",
+      "command": "python agents/overseer_agent.py --demo"
+    },
+    "step_6": {
+      "action": "Schedule Florida attorney consultation",
+      "priority": "HIGH - required before Phase 4"
+    }
+  },
+
+  "future_context_prompt": {
+    "summary": "This JSON contains the complete specification for JIHUB (JobIntel Hub), a Windows desktop app for resume intelligence and ghost job fraud detection. Starter code has been created for: DuckDB schema, ResumeAgent, SHL protocol, and OverseerAgent. The developer is Jack, an independent investigative journalist in Florida building this for public accountability. Key decisions: Gemini API, DuckDB storage, Tauri GUI, pipe-delimited SHL for agent communication, human checkpoints for cost control. Legal consultation required before field intel module due to Florida two-party consent laws.",
+    "key_files": ["database/schema.py", "agents/resume_agent.py", "agents/shl_protocol.py", "agents/overseer_agent.py"],
+    "next_module_to_build": "scraper_engine (Indeed and LinkedIn scrapers)"
+  }
+}
